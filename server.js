@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 
 const app = express();
 
@@ -8,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 mongoose.connect(
-  "mongodb+srv://philippe:mossoko0302@cluster0.1fftp.mongodb.net/MERN-testDB",
+  process.env.DATABASE,
   { useUnifiedTopology: true, useNewUrlParser: true },
   () => console.log("connected to mongoDB")
 );
